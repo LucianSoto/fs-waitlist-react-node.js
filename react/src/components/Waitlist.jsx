@@ -9,9 +9,14 @@ export default function Waitlist () {
   })
 
   return (
-    <div className='waitlist-container'>
-      <h1 className='title'>LUXIAN'S WAITLIST</h1>
-      
+    <div className='waitlist'>
+      <div className="customer">1</div>
+      <div className="customer">2</div>
+      <div className="customer">3</div>
+      <div className="customer">4</div>
+      <div className="customer">5</div>
+
     </div>
+    
   )
 }

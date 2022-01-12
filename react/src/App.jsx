@@ -19,13 +19,16 @@ function App() {
  
   return (
     <div className="App">
-      <Waitlist />
-      <JoinButton toggle={toggle}/>
-      {/* <h1>{!data ? "Loading..." : data}</h1> */}
+      <div className='waitlist-container'>
+        <h1 className='title'>LUXIAN'S WAITLIST</h1>
+        <JoinButton toggle={toggle}/>
+        <Waitlist />
+      </div>
       <ModalForm
         isShowing={isShowing}
         hide={toggle}
       />
+      {/* <h1>{!data ? "Loading..." : data}</h1> */}
     </div>
   );
 }
