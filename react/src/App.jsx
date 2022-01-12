@@ -1,37 +1,33 @@
-import logo from './logo.svg';
+
+import React from 'react'
 import './App.css';
-import React from "react"
+import Waitlist from './components/Waitlist';
+import ModalForm from './components/ModalForm';
+import useModal from './components/useModal';
+import JoinButton from './components/JoinButton';
+
 
 function App() {
-
   const [data, setData] = React.useState(null)
-
   React.useEffect(() => {
     fetch('/api')
       .then((res) => res.json())
       .then((data) => setData(data.message))
   }, [])
 
+  const { isShowing, toggle } = useModal()
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>working on gits</p>
-        <h1>{!data ? "Loading..." : data}</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Waitlist />
+      <JoinButton toggle={toggle}/>
+      {/* <h1>{!data ? "Loading..." : data}</h1> */}
+      <ModalForm
+        isShowing={isShowing}
+        hide={toggle}
+      />
     </div>
   );
 }
 
-export default App;
+export default App;  
