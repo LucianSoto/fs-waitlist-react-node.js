@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import Modal from 'react-modal'
 import JoinButton from './JoinButton'
 
 function ModalForm() {
   const [isOpen, setIsOpen] = React.useState(false)
-
+  const [name, setName] = React.useState('')
+  const [phone, setPhone] = React.useState('')
+  const [size, setSize] = React.useState(0)
+  const [ofAge, setOfAge] = React.useState(false)
+  
   function openModal() {
     setIsOpen(true)
   }
@@ -13,8 +17,15 @@ function ModalForm() {
     setIsOpen(false)
   }
 
-  function handleSubmit () {
-    
+  function handleSubmit (e) {
+    e.preventDefault()
+    console.log(name, phone, size, ofAge)
+    closeModal()
+    setName('')
+    setPhone('')
+    setSize(0)
+    setOfAge(false)
+    // api call time
   }
 
   return (
@@ -34,21 +45,23 @@ function ModalForm() {
           <label className="name">Name</label>
           <br />
           <input 
+            name='name'
             type="text" 
             className="text-input" 
-            // value={state.name}
+            value={name}
             placeholder="Name"
-            // onChange={handleChange}
+            onChange={(e) => setName(e.target.value)}
           />
           <br />
           <label className="phone">Phone Number</label>
           <br />
           <input 
+            name='phone'
             type="text" 
             className="text-input" 
-            // value={state.phone}
-            placeholder="Name"
-            // onChange={handleChange}
+            value={phone}
+            placeholder="Phone"
+            onChange={(e) => setPhone(e.target.value)}
           />
           <br />
           <label className="size">Party Size</label>
@@ -56,8 +69,10 @@ function ModalForm() {
             name="size" 
             id="size" 
             className="select-size" 
-            // value={state.size}
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
           >
+            <option value=""></option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -74,10 +89,10 @@ function ModalForm() {
           <br />
           <label className='of-age'>21 Or Older?</label>
           <input 
-            type="text" 
+            type="checkbox" 
             name="ofAge"
-            // checked={state.ofAge}
-            // onChage={handleChange}
+            checked={ofAge}
+            onChange={(e) => setOfAge(!ofAge)}
           />
           <br />
           <button type='submit' value="submit">SUBMIT</button>
