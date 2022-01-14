@@ -1,10 +1,6 @@
 import React from 'react'
-import useModal from './useModal'
 
-
-export function JoinButton (props) {
-  // const [modalIsOpen, setIsModalOpen] = React.useState(false)
-  const { isShowing, toggle } = useModal()
+export function JoinButton ({ onClick, isOpen}) {
 
   const buttonStyles = {
     width: 190,
@@ -19,7 +15,7 @@ export function JoinButton (props) {
   }
 
   return (
-    <button className='button-default' style={buttonStyles} onClick={props.toggle}>JOIN</button>
+    <button className='button-default' style={buttonStyles} onClick={onClick}>JOIN</button>
   )
 }
 

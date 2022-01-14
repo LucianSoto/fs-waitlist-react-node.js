@@ -9,7 +9,7 @@ export default function Waitlist () {
   })
   const customersWaiting = dummyCustomersData.map((data)=> {
   
-  return  <div className='customer-container'>
+  return  <div className='customer-container' key={data.id}>
             <p className="name">{data.name}</p>
             <p className="phone">{data.phone}</p>
             <p className="size">{data.size}</p>
