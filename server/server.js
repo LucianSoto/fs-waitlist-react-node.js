@@ -1,15 +1,61 @@
 const express = require('express')
-
-const PORT = process.env.PORT || 3001
-
+const cors = require('cors')
 const app = express()
+const PORT = 3000
+const {pool} = require('./dbConfig')
+// const { Server } = require('http')
+const hostname = '127.0.0.1'
+const os = require('os')
 
-app.get('/api', (req, res) => {
-  res.json({message: 'Hello From Server!!!'})
+
+app.use(cors())
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+app.set('view engine')
+
+app.post("/create_customer", (req, res, next) => {
+  let { name, phone, size } = req.body
+  let errors = []
+  console.log(os.hostname())
+  if(!name || !phone || !size /*|| !ofAge*/) {
+    errors.push({message: "fields empty"})
+  }
+  if(errors.length > 0) {
+    res.render('Post Creation', {errors})
+    alert('input field must be empty')
+   } else {
+     console.log(name, typeof(name))
+     pool.query(
+      `SELECT * FROM waitlist_schema.waitlist_react_table
+        WHERE name = $1` , [name], (err, result) => {
+          if(err) {
+            console.log(name, phone, size, result)
+            throw err
+          }
+          console.log(result.rows, "results")
+          if(result.rows.length !== 0) {
+            return res.status(400).json({message: 'Customer already exists!'})
+          }
+          pool.query(
+            `INSERT INTO waitlist_schema.waitlist_react_table
+            (name, phone, size) VALUES ($1, $2, $3)`, 
+            [name, phone, size], (err, result) => {
+              if(err) {
+                throw err
+              }
+              return res.status(200).json({message: "customer added"}), JSON.stringify(req.body)
+            }
+          )
+        }
+     )   
+   }
 })
+
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from server!" });
+});
 
 app.listen(PORT, ()=> {
   console.log(`Server Listening On Port ${PORT}`)
 })
-
 

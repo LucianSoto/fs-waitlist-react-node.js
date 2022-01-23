@@ -1,15 +1,29 @@
 {
-  "name": "fullstackDoodles",
+  "name": "waitlist",
   "version": "1.0.0",
-  "description": "",
+  "description": "WAITLIST APPLICATION",
   "main": "index.js",
-  "scripts": {
-    "start": "node server/index.js nodemon"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
-  }
+    "cors": "^2.8.5",
+    "dbconfig": "^1.1.7",
+    "dotenv": "^14.1.0",
+    "express": "^4.17.2",
+    "node.js": "0.0.1-security",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucianAiolos/fs-waitlist-react-node.js.git"
+  },
+  "author": "Luxian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LucianAiolos/fs-waitlist-react-node.js/issues"
+  },
+  "homepage": "https://github.com/LucianAiolos/fs-waitlist-react-node.js#readme"
 }

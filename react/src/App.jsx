@@ -6,8 +6,9 @@ import ModalForm from './components/ModalForm';
 
 function App() {
   const [data, setData] = React.useState(null)
+
   React.useEffect(() => {
-    fetch('/api')
+    fetch('http://localhost:3000/api')
       .then((res) => res.json())
       .then((data) => setData(data.message))
   }, [])
@@ -19,6 +20,10 @@ function App() {
         <ModalForm/>
         <Waitlist />
       </div>
+<<<<<<< Updated upstream
+=======
+      {/* <h3>{ !data? "loading..." : data }</h3> */}
+>>>>>>> Stashed changes
     </div>
   );
 }
