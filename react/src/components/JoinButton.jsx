@@ -11,7 +11,8 @@ export function JoinButton ({ onClick, isOpen}) {
     fontSize: 25,
     letterSpacing: 5,
     textAlign: "center",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    marginBottom: 20,
   }
 
   return (

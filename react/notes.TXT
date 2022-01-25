@@ -3,23 +3,9 @@ notes for project.
 ---BREAK PROJECT DOWN---
 
 LOOK AT NOTES MORE OFTEN TO SEE WHAT IS NEXT
-<<<<<<< Updated upstream
-=======
 
+Got new error
+on server side
 
-Still working on this error
-
-Error: getaddrinfo ENOTFOUND undefined
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:67:26) {
-  errno: -3008,
-  code: 'ENOTFOUND',
-  syscall: 'getaddrinfo',
-  hostname: 'undefined'
-}
-
---seems to be either dns or http or local hostname related.
--- says hostname is KRAKEN
-
-1. look up the error on google
-2. try to set host name
->>>>>>> Stashed changes
+1. style page scroll bar
+2.name api get call to display customers waiting from DB.

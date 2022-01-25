@@ -1,0 +1,15 @@
+.waitlist {
+  width: 85%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.customer-container {
+
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr .5fr;
+}

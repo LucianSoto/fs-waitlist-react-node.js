@@ -25,8 +25,12 @@ yarn-error.log*
 
 /customHookModal
 
-<<<<<<< Updated upstream
+.env
+/.env
+./.env
+
+
 =======
 server/.env
 
->>>>>>> Stashed changes
+
