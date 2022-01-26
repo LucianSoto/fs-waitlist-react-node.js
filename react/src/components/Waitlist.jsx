@@ -9,11 +9,11 @@ export default function Waitlist () {
   })
   const customersWaiting = dummyCustomersData.map((data)=> {
   
-  return  <div className='customer-container' key={data.id}>
+  return  <div className='customer-container-grid' key={data.id}>
             <p className="name">{data.name}</p>
             <p className="phone">{data.phone}</p>
             <p className="size">{data.size}</p>
-            <p className="of-age">{data.ofAge === true? "21" : "Minors"}</p>
+            <p className="of-age">{data.ofAge === true? "Yes" : "No"}</p>
           </div>
   })
   return (

@@ -49,6 +49,7 @@ function ModalForm() {
     e.preventDefault()
     console.log(name.length)
     if(name.length > 0) {
+      //error handleing here to make it easier before it even goes to the server/api
       fetch('http://localhost:3000/create_customer', {
       method: 'POST',
       headers: {
