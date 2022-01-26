@@ -9,3 +9,6 @@ on server side
 
 1. style page scroll bar
 2.name api get call to display customers waiting from DB.
+3. how to make it so you can delete things on a table/phone by swiping left?
+4.style checkbox
+5.work on error handling

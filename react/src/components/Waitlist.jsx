@@ -4,6 +4,7 @@ import Customer from './Customer'
 import './waitlistStyles.css'
 
 export default function Waitlist () {
+
   const [waitlistData, setWaitlistData] = React.useState({
   })
   const customersWaiting = dummyCustomersData.map((data)=> {

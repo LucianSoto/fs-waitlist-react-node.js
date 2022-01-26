@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
 import JoinButton from './JoinButton'
+import './modalFormStyles.css'
 
 function ModalForm() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -44,9 +45,9 @@ function ModalForm() {
       })
     }
   
-
   function handleSubmit (e) {
     e.preventDefault()
+    console.log(name.length)
     if(name.length > 0) {
       fetch('http://localhost:3000/create_customer', {
       method: 'POST',
@@ -59,7 +60,7 @@ function ModalForm() {
         if(response.status === 200) {
           console.log('we did it!')
         } else {
-          console.log('CHECK ALL FIELDS', )
+          alert('CHECK ALL FIELDS', )
         }
       })
     } 
@@ -74,82 +75,81 @@ function ModalForm() {
         isOpen={isOpen}
         onRequestClose={closeModal}
         ariaHideApp={false}
+        onRequestClose={closeModal}
+        className="Modal"
+        overlayClassName="Overlay"
       >
-        <button type="button" className='modal-close-button' data-dismiss="modal" aria-label="Close" onClick={closeModal} aria-hidden="true">&times;</button>
+        
         <form 
           className="form" 
           action="submit" 
           onSubmit={handleSubmit}
         >
-          <label className="name">Name</label>
+          <h2>We're Gonna Need Your Info!</h2>
+          <button type="button" className='modal-close-button' data-dismiss="modal" aria-label="Close" onClick={closeModal} aria-hidden="true">&times;</button>
+          <div className="text-inputs-cont">
+            <label className="name">Name</label>
+            <br />
+            <input 
+              name='name'
+              type="text" 
+              className="text-input" 
+              placeholder="Name"
+              value={name}
+              placeholder="Name"
+              onChange={handleChange}
+            />
+            <br />
+            <label className="phone">Phone Number</label>
+            <br />
+            <input 
+              name='phone'
+              type="text" 
+              className="text-input" 
+              placeholder="Phone"
+              value={phone}
+              placeholder="Phone"
+              onChange={handleChange}
+            />
+          </div>
           <br />
-          <input 
-            name='name'
-            type="text" 
-            className="text-input" 
-            // value={name}
-            placeholder="Name"
-            // onChange={(e) => setName(e.target.value)}
-            value={name}
-            placeholder="Name"
-            onChange={handleChange}
-          />
+          <div className="size-ofAge-cont">
+            <label className="size">Party Size</label>
+            <select 
+              name="size" 
+              id="size" 
+              className="select-size" 
+              value={size}
+              onChange={handleChange}
+            >
+              <option value="">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <br />
+            <label className='of-age'>21 Or Older?</label>
+            <span>
+            <input 
+              type="checkbox" 
+              name="ofAge"
+              checked={ofAge}
+              onChange={handleChange}
+              className='ofAge-checkbox'
+            />
+            </span>
+          </div>
           <br />
-          <label className="phone">Phone Number</label>
-          <br />
-          <input 
-            name='phone'
-            type="text" 
-            className="text-input" 
-            // value={phone}
-            placeholder="Phone"
-            // onChange={(e) => setPhone(e.target.value)}
-            value={phone}
-            placeholder="Phone"
-            onChange={handleChange}
-          />
-          <br />
-          <label className="size">Party Size</label>
-          <select 
-            name="size" 
-            id="size" 
-            className="select-size" 
-            // value={size}
-            // onChange={(e) => setSize(e.target.value)}
-            value={size}
-            onChange={handleChange}
-          >
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-          <br />
-          <label className='of-age'>21 Or Older?</label>
-          {/* <input 
-            type="checkbox" 
-            name="ofAge"
-            checked={ofAge}
-            // onChange={(e) => setOfAge(!ofAge)}
-          /> */}
-          <br />
-          <input 
-            type="checkbox" 
-            name="ofAge"
-            checked={ofAge}
-            onChange={handleChange}
-          />
-          <br />
-          <button>SUBMIT</button>
+          <button className='submit'>SUBMIT</button>
         </form>
       </Modal>
     </div>

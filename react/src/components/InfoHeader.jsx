@@ -6,10 +6,9 @@ function InfoHeader() {
     marginTop: 30,
     marginBottom: 30,
     fontSize: 20,
-    display: "flex",
-    width: "85%",
-    flexDirection: "row",
-    justifyContent: "space-around"
+    width: "80%",
+    display: 'grid',
+    gridTemplateColumns: '1.7fr 1.3fr .5fr .5fr'
   }
 
   return <div style={infoHeaderStyles}>
