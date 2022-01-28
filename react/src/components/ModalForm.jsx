@@ -5,14 +5,6 @@ import './modalFormStyles.css'
 
 function ModalForm() {
   const [isOpen, setIsOpen] = React.useState(false)
-  // const [name, setName] = React.useState('')
-  // const [phone, setPhone] = React.useState('')
-  // const [size, setSize] = React.useState(0)
-  // const [ofAge, setOfAge] = React.useState(false)
-  // const [name, setName] = React.useState('')
-  // const [phone, setPhone] = React.useState('')
-  // const [size, setSize] = React.useState(0)
-  // const [ofAge, setOfAge] = React.useState(false)
 
   const initState = {
       name: "",

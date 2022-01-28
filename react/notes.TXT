@@ -7,7 +7,8 @@ LOOK AT NOTES MORE OFTEN TO SEE WHAT IS NEXT
 Got new error
 on server side
 
-1. style page scroll bar
+1. style page scroll bar and fix form styles ughhhh
+
 2.name api get call to display customers waiting from DB.
 3. how to make it so you can delete things on a table/phone by swiping left?
 4.style checkbox

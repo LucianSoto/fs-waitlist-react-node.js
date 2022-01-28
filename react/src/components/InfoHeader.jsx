@@ -15,8 +15,7 @@ function InfoHeader() {
   }
 
   const ofAgeTag = {
-    display: 'flex',
-    justifyContent: 'flex-end',
+    justifySelf: 'end'
   }
 
   return <div style={infoHeaderStyles}>

@@ -4,9 +4,9 @@ const app = express()
 const PORT = 3000
 const {pool} = require('./dbConfig')
 // const { Server } = require('http')
-const hostname = '127.0.0.1'
+// const hostname = '127.0.0.1'
 //do i really need host name?
-const os = require('os')
+// const os = require('os')
 
 
 app.use(cors())
@@ -42,12 +42,27 @@ app.post("/create_customer", (req, res, next) => {
               if(err) {
                 throw err
               }
+              console.log('success')
               return res.status(200).json({message: "customer added"}), JSON.stringify(req.body)
             }
           )
         }
      )   
    }
+})
+
+
+app.get('/get_waitlist', (req, res, next) => {
+  pool.query(
+    `SELECT * FROM waitlist_schema.waitlist_react_table ORDER BY id ASC`,
+    (err, result) => {
+      if(err) {
+        throw err
+      }
+      console.log(result.rows)
+      return res.status(200).json({message: 'all customers', data: result.rows})
+    }
+  )
 })
 
 app.get("/api", (req, res) => {
