@@ -3,8 +3,9 @@ import Modal from 'react-modal'
 import JoinButton from './JoinButton'
 import './modalFormStyles.css'
 
-function ModalForm() {
+function ModalForm( {updateList} ) {
   const [isOpen, setIsOpen] = React.useState(false)
+  // const [effect, setEffect] = React.useState([false])
 
   const initState = {
       name: "",
@@ -39,7 +40,6 @@ function ModalForm() {
   
   function handleSubmit (e) {
     e.preventDefault()
-    console.log(name.length)
     if(name.length > 0) {
       //error handleing here to make it easier before it even goes to the server/api
       fetch('http://localhost:3000/create_customer', {
@@ -72,7 +72,6 @@ function ModalForm() {
         className="Modal"
         overlayClassName="Overlay"
       >
-        
         <form 
           className="form" 
           action="submit" 
@@ -142,7 +141,7 @@ function ModalForm() {
             </span>
           </div>
           <br />
-          <button className='submit'>SUBMIT</button>
+          <button className='submit' onClick={updateList}>SUBMIT</button>
         </form>
       </Modal>
     </div>
