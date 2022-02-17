@@ -17,7 +17,6 @@ app.use(express.json())
 app.post("/create_customer", (req, res, next) => {
   let { name, phone, size, ofAge } = req.body
   let errors = []
-  // console.log(os.hostname())
   if(!name || !phone || !size || !ofAge) {
     errors.push({message: "fields empty"})
   }
@@ -29,7 +28,7 @@ app.post("/create_customer", (req, res, next) => {
       `SELECT * FROM waitlist_schema.waitlist_react_table
         WHERE name = $1` , [name], (err, result) => {
           if(err) {
-            console.log(name, phone, size, result)
+            console.log(name, phone, size, ofAge, result)
             throw err
           }
           if(result.rows.length !== 0) {
@@ -42,8 +41,7 @@ app.post("/create_customer", (req, res, next) => {
               if(err) {
                 throw err
               }
-              console.log('success')
-              return res.status(200).json({message: "customer added"}), JSON.stringify(req.body)
+              return res.status(200).json({message: "customer added successfully!"}), JSON.stringify(req.body)
             }
           )
         }

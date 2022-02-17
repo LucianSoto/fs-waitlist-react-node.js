@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
-// import dummyCustomersData from './dummyCustomersData'
-import Customer from './Customer'
 import './waitlistStyles.css'
-// import { getCustomers } from './getCustomers'
-
 
 export default function Waitlist ({waitlistData}) {
-
-  // const [effect, setEffect] = React.useState([false])
-  console.log(waitlistData, 'in waitlist function')
+  //MAKE CUSTOMER COMPONENT
   return (
     <div className='waitlist'>
       {

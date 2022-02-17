@@ -3,21 +3,13 @@ import Modal from 'react-modal'
 import JoinButton from './JoinButton'
 import './modalFormStyles.css'
 
-function ModalForm( {updateList} ) {
+function ModalForm( { onSubmit } ) {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [name, setName] = React.useState('')
+  const [phone, setPhone] = React.useState('')
+  const [size, setSize] = React.useState('')
+  const [ofAge, setOfAge] = React.useState('')
   // const [effect, setEffect] = React.useState([false])
-
-  const initState = {
-      name: "",
-      phone: "",
-      size: 0,
-      ofAge: false,
-  }
-
-  const [
-  { name, phone, size, ofAge },
-  setState 
-  ] = React.useState({...initState})
   
   function openModal() {
     setIsOpen(true)
@@ -27,38 +19,21 @@ function ModalForm( {updateList} ) {
     setIsOpen(false)
   }
 
-    // api call time
-    function handleChange(e) {
-      const {name, value, type, checked} = e.target
-      setState(prevFromData => {
-        return {
-          ...prevFromData,
-          [name] : type === 'checkbox' ? checked : value
-        }
-      })
-    }
   
   function handleSubmit (e) {
     e.preventDefault()
-    if(name.length > 0) {
+    if(name.length <= 0) {
       //error handleing here to make it easier before it even goes to the server/api
-      fetch('http://localhost:3000/create_customer', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: `name=${name}&phone=${phone}&size=${size}&ofAge=${ofAge}`
-      })
-      .then(response => {
-        if(response.status === 200) {
-          console.log('we did it!')
-        } else {
-          alert('CHECK ALL FIELDS', )
-        }
-      })
+      alert('please enter a name')
+      return
     } 
+
+    onSubmit({ name, phone, size, ofAge }) 
     closeModal()
-    setState({...initState})
+    setName('')
+    setPhone('')
+    setSize('')
+    setOfAge('')
   }
 
   return (
@@ -87,9 +62,8 @@ function ModalForm( {updateList} ) {
               type="text" 
               className="text-input" 
               placeholder="Name"
-              value={name}
-              placeholder="Name"
-              onChange={handleChange}
+              value={name}   
+              onChange={(e) => setName(e.target.value)}
             />
             <br />
             <label className="phone">Phone Number</label>
@@ -100,8 +74,7 @@ function ModalForm( {updateList} ) {
               className="text-input" 
               placeholder="Phone"
               value={phone}
-              placeholder="Phone"
-              onChange={handleChange}
+              onChange={(e) => setPhone(e.target.value)}
             />
           </div>
           <br />
@@ -112,7 +85,7 @@ function ModalForm( {updateList} ) {
               id="size" 
               className="select-size" 
               value={size}
-              onChange={handleChange}
+              onChange={(e) => setSize(e.target.value)}
             >
               <option value="">0</option>
               <option value="1">1</option>
@@ -133,15 +106,15 @@ function ModalForm( {updateList} ) {
             <span>
             <input 
               type="checkbox" 
-              name="ofAge"
+              name="ofAge"us
               checked={ofAge}
-              onChange={handleChange}
+              onChange={(e) => setOfAge(e.currentTarget.checked)}
               className='ofAge-checkbox'
             />
             </span>
           </div>
           <br />
-          <button className='submit' onClick={updateList}>SUBMIT</button>
+          <button className='submit'>SUBMIT</button>
         </form>
       </Modal>
     </div>
