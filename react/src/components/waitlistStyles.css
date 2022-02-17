@@ -6,13 +6,3 @@
   align-items: center;
 }
 
-.customer-container-grid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1.7fr 1.3fr .5fr .5fr;
-  border-bottom: 1px solid rgb(180, 180, 180);
-}
-
-.of-age {
-  justify-self: end;
-}

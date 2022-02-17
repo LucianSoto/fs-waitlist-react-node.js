@@ -22,6 +22,10 @@ function App() {
     return data
   }
 
+  const removeCustomer = async (id) => {
+    
+  }
+
   const addCustomer = async ({ name, phone, size, ofAge}) => {
     const res = await fetch('http://localhost:3000/create_customer', {
       method: 'POST',
@@ -35,14 +39,12 @@ function App() {
       
       const listFromServer = await fetchCustomers()
       setWaitlistData(listFromServer.data)
-
       // .then(response => {
       //   if(response.status === 200) {
       //     console.log('we did it!')
       //   } else {
       //     alert('CHECK ALL FIELDS', )
       //   }
-    
   }
 
   return (
@@ -56,6 +58,7 @@ function App() {
         {waitlistData.length > 0? (
           <Waitlist 
             waitlistData={waitlistData}
+            removeCustomer={removeCustomer}
           />
         ) : (
           'no customers waiting'

@@ -1,0 +1,18 @@
+.customer-container-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.5fr 1.3fr .5fr .5fr .25fr;
+  border-bottom: 1px solid rgb(180, 180, 180);
+}
+
+.of-age {
+  justify-self: end;
+}
+
+.customer-container-grid button{
+  border: none;
+  background-color: transparent;
+  color: red;
+  justify-self: end;
+  cursor: pointer;
+}

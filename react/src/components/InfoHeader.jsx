@@ -8,7 +8,7 @@ function InfoHeader() {
     fontSize: 20,
     width: "80%",
     display: 'grid',
-    gridTemplateColumns: '1.7fr 1.3fr .5fr .5fr',
+    gridTemplateColumns: '1.5fr 1.3fr .5fr .5fr .25fr',
     justifyContent: 'center',
     alignItems: 'center',
     fontWeight: '550'

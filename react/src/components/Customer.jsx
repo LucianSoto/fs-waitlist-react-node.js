@@ -1,13 +1,14 @@
 import React from 'react'
+import './customer.css'
 
-function Customer(props) {
+function Customer({ name, phone, size, ofAge, removeCustomer}) {
   return (
-    <div className='customer-container'>
-      <p className="name">{props.name}</p>
-      <p className="phone">{props.phone}</p>
-      <p className="size">{props.size}</p>
-      <p className="of-age">{props.ofAge}</p>
-      <button className="remove-customer">X</button>
+      <div className='customer-container-grid'>
+      <p className="name">{name}</p>
+      <p className="phone">{phone}</p>
+      <p className="size">{size}</p>
+      <p className="of-age">{ofAge? "Yes" : "No"}</p>
+      <button className="remove-customer" onClick={removeCustomer}>X</button>
     </div>
   )
 }
