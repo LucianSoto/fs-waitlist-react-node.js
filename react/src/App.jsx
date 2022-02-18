@@ -23,7 +23,19 @@ function App() {
   }
 
   const removeCustomer = async (id) => {
+    console.log(id)
+    const res = await fetch('http://localhost:3000/remove_customer', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: `id=${id}`
+    })
+    console.log(res)
+    alert('customer removed')
     
+    const listFromServer = await fetchCustomers()
+    setWaitlistData(listFromServer.data)
   }
 
   const addCustomer = async ({ name, phone, size, ofAge}) => {

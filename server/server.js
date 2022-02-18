@@ -63,6 +63,20 @@ app.get('/get_waitlist', (req, res, next) => {
   )
 })
 
+app.delete('/remove_customer', (req, res, next) => {
+  let { id } = req.body
+  console.log(id)
+  //errors
+  pool.query(
+    `DELETE FROM waitlist_schema.waitlist_react_table WHERE id = $1 RETURNING *`, [id], (err, result) => {
+      if(err) {
+        throw err
+      }
+      return res.status(200).json({message: 'customer deleted successfully!'}), JSON.stringify(req.body)
+    }
+  )
+})
+
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
