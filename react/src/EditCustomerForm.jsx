@@ -1,52 +1,38 @@
 import React from 'react'
 import Modal from 'react-modal'
-import JoinButton from './JoinButton'
-import './modalFormStyles.css'
+// css
 
-function ModalForm( { onSubmit } ) {
-  const [isOpen, setIsOpen] = React.useState(false)
+function EditCustomerForm({ editForm }) {
+  const [isOpen, setIsOpen] = React.useState(editForm)
   const [name, setName] = React.useState('')
   const [phone, setPhone] = React.useState('')
   const [size, setSize] = React.useState('')
   const [ofAge, setOfAge] = React.useState('')
-  // const [effect, setEffect] = React.useState([false])
-  
-  function openFormModal() {
-    setIsOpen(true)
-  }
 
-  function closeFormModal () {
+  // how to brin in info from clicked element?
+
+  const closeFormModal = () => {
     setIsOpen(false)
   }
 
-  function handleSubmit (e) {
-    e.preventDefault()
-    if(name.length <= 0) {
-      //error handleing here to make it easier before it even goes to the server/api
-      alert('please enter a name')
-      return
-    } 
+  
 
-    onSubmit({ name, phone, size, ofAge }) 
+  const handleSubmit = () => {
+    console.log('clicked')
     closeFormModal()
-    setName('')
-    setPhone('')
-    setSize('')
-    setOfAge('')
   }
 
   return (
-    <div className="modal-container">
-      <JoinButton onClick={openFormModal} />
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={closeFormModal}
-        ariaHideApp={false}
-        onRequestClose={closeFormModal}
-        className="Modal"
-        overlayClassName="Overlay"
-      >
-        <form 
+    <>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={closeFormModal}
+      ariaHideApp={false}
+      onRequestClose={closeFormModal}
+      className="Modal"
+      overlayClassName="Overlay"
+    >
+      <form 
           className="form" 
           action="submit" 
           onSubmit={handleSubmit}
@@ -115,10 +101,10 @@ function ModalForm( { onSubmit } ) {
           <br />
           <button className='submit'>SUBMIT</button>
         </form>
-      </Modal>
-    </div>
+
+    </Modal>
+    </>
   )
 }
 
-export default ModalForm
-
+export default EditCustomerForm

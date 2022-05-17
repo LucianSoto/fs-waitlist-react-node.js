@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: 1.5fr 1.3fr .5fr .5fr .25fr;
   border-bottom: 1px solid rgb(180, 180, 180);
+  cursor: pointer;
 }
 
 .of-age {
